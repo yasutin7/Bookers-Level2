@@ -1,0 +1,22 @@
+ <h2>User info</h2>
+    <table class='table'>
+      <tr>
+        <%if user.profile_image == nil %>
+          <%= image_tag 'noimage.jpg', :size => '100x100',class:"attachment user profile_image fallback" %>
+        <%else%>
+          <%= image_tag attachment_url(user, :profile_image, :fill, 100, 100, format: "jpg") ,class:"attachment user profile_image fallback"%>
+        <%end%>
+      </tr> 
+      <tr>
+    	  <th>name</th>
+    	  <th><%= user.name %></th>
+      </tr>
+      <tr>
+    	  <th>introduction</th>
+    	  <th><%= user.introduction %></th>
+      </tr>
+     </table>
+
+<div class='row'>
+  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench " href="/users/<%= current_user.id%>/edit"></a>
+</div>

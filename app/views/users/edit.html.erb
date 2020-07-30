@@ -1,0 +1,23 @@
+
+<div class='col-md-6 col-md-offset-3'>
+  <h1>User info</h1>
+    <%= form_with model: @user ,local: true do |f| %>
+      <label>Name</label>
+      <div class="field">
+        <%= f.text_field :name %>
+      </div>
+      <label>Image</label>
+      <div class="field">
+        <%= f.attachment_field :profile_image %>       
+      </div>
+      <label>Introduction</label>
+      <div class="field">
+        <%= f.text_area :introduction %>
+      </div>
+      <div class= "actions">
+        <%= f.submit value="Update User" %>
+      </div>
+      <% end %>
+
+</div>
+

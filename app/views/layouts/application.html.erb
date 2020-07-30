@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookersLevel2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <header class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+          <nav class='nav navbar-nav navbar-left' >
+            <span>Bookers</span>
+          </nav>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+               <li><a class="glyphicon glyphicon-home home" href="/users/<%=current_user.id%>"> Home</a></li>
+               <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>
+               <li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>
+               <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
+           
+            <% else %>
+                <li><a class="glyphicon glyphicon-home home" href="/"> Home</a></li>
+                <li><a class="glyphicon glyphicon-link about" href="/home/about"> About</a></li>
+                <li><a class="glyphicon glyphicon-edit sign_up" href="/users/sign_up"> sign up</a></li>
+                <li><a class="glyphicon glyphicon-log-in sign_in" href="/users/sign_in"> login</a></li>
+            <%end%>
+            </ul>
+          </nav>
+        </div>
+      </header>
+     
+    <div class="body">
+     <div class="container">
+      <div class="row">
+    <p id = "notice"><%= flash[:notice] %></p>
+    <p id = "notice"><%= flash[:success] %></p>
+    <p id = "alert"><%= flash[:alert] %></p>
+       <%= yield %>
+       </div>
+      </div>
+    </div>
+      <footer>
+        <div class='container'>
+          <div class='row'>
+            <div class='col-xs-3 col-xs-offset-9'>
+              <p>CopyRight Infratop.inc</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+  </body>
+</html>
